@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Roti Manis Aneka Rasa",
+    "image": "https://images.unsplash.com/photo-1542826438-7e5c7c7d5c1d?q=80&w=600",
+    "description": "Cokelat, Keju, Srikaya, Kacang Merah",
+    "price": "Rp15.000",
+    "availability": "InStock"
+  },
+  {
+    "name": "Aneka Kue Basah",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600",
+    "description": "Lapis, Lemper, Risoles, Pastel",
+    "price": "Rp20.000",
+    "availability": "InStock"
+  }
+]

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distributor PND | Roti & Kue Segar</title>
+<meta name="description" content="Distributor PND menyediakan aneka roti, kue basah, kue kering, dan camilan berkualitas untuk toko & reseller. Harga kompetitif & stok fresh setiap hari.">
+<meta name="robots" content="index, follow">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+body { font-family: 'Poppins', sans-serif; }
+.wa-float {
+  position: fixed; bottom: 25px; right: 25px;
+  background: #25D366; color: #fff; padding: 12px 20px; border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex; align-items: center; gap: 8px; transition: 0.3s; z-index: 1000;
+}
+.wa-float:hover { background: #1da851; transform: translateY(-4px); }
+.product-card:hover img { transform: scale(1.05); }
+.slider-container { position: relative; overflow-x: auto; scroll-behavior: smooth; }
+.slider-track { display: flex; gap: 1rem; padding-bottom: 1rem; }
+.slider-card { min-width: 250px; flex-shrink: 0; cursor: pointer; transition: transform 0.3s; }
+.slider-card img { border-radius: 1rem; width: 100%; height: 200px; object-fit: cover; }
+.slider-card:hover { transform: scale(1.05); }
+.modal { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center; visibility:hidden; opacity:0; transition:0.3s; z-index:2000; }
+.modal img { max-width: 90%; max-height: 90%; border-radius:1rem; }
+.modal.show { visibility: visible; opacity:1; }
+</style>
+
+<!-- Local SEO / JSON-LD Store Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Distributor PND",
+  "image": "logo-anda.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Raya Industri No. 123",
+    "addressLocality": "Bandung",
+    "addressRegion": "Jawa Barat",
+    "postalCode": "40123",
+    "addressCountry": "ID"
+  },
+  "telephone": "+6281234567890",
+  "geo": { "@type": "GeoCoordinates", "latitude": -6.914744, "longitude": 107.609810 },
+  "url": "https://username.github.io/repo",
+  "priceRange": "$$"
+}
+</script>
+</head>
+
+<body class="bg-orange-50 text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-white shadow sticky top-0 z-50">
+  <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <img src="logo-anda.png" alt="Logo Distributor PND" class="h-14 w-14 rounded-full border-2 border-orange-400">
+      <div>
+        <span class="block text-xl font-bold text-orange-700 leading-none">PND</span>
+        <span class="text-xs text-gray-500 uppercase tracking-widest">Distributor Roti & Kue</span>
+      </div>
+    </div>
+    <ul class="hidden md:flex space-x-6 font-medium">
+      <li><a href="#home" class="hover:text-orange-600">Beranda</a></li>
+      <li><a href="#galeri" class="hover:text-orange-600">Produk</a></li>
+      <li><a href="#kontak" class="hover:text-orange-600">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="bg-orange-100 py-20 px-6">
+  <div class="container mx-auto flex flex-col md:flex-row items-center gap-10">
+    <div class="md:w-1/2 text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-orange-900 mb-4 italic">Segar Dari Oven Setiap Hari!</h1>
+      <p class="text-lg text-orange-800 mb-8">Distributor roti & kue untuk toko, kantin, dan reseller. Stok fresh, harga masuk akal.</p>
+      <a href="#galeri" class="bg-orange-600 text-white px-8 py-3 rounded-full font-bold hover:bg-orange-700">Lihat Katalog</a>
+    </div>
+    <div class="md:w-1/2 flex justify-center">
+      <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=800" alt="Aneka Roti Segar" class="rounded-2xl shadow-2xl w-4/5" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- GALERI SLIDER -->
+<section id="galeri" class="container mx-auto py-20 px-6">
+  <h2 class="text-3xl font-bold text-center mb-12">Produk Terlaris</h2>
+  <div class="slider-container">
+    <div id="slider-track" class="slider-track"></div>
+  </div>
+</section>
+
+<!-- MODAL ZOOM -->
+<div id="modal" class="modal"><img id="modal-img" src="" alt="Zoom Produk"></div>
+
+<!-- FOOTER -->
+<footer id="kontak" class="bg-gray-900 text-gray-300 py-12 px-6 text-center">
+  <h4 class="text-white text-xl font-bold mb-3">Distributor PND</h4>
+  <p class="text-sm mb-2">Jl. Raya Industri No.123, Bandung, Jawa Barat</p>
+  <p class="text-sm mb-2">Telp: +62 812-3456-7890</p>
+  <p class="text-sm mb-4">Email: pnd.distributor@email.com</p>
+  <div class="mt-8 text-xs text-gray-500">© 2025 Distributor PND</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank" aria-label="Chat WhatsApp">
+  <i class="fa-brands fa-whatsapp text-2xl"></i>
+  <span class="font-bold text-sm">Order WA</span>
+</a>
+
+<!-- SCRIPT: Load Produk dari JSON -->
+<script>
+const track = document.getElementById('slider-track');
+
+fetch('products.json')
+  .then(res => res.json())
+  .then(produkData => {
+    produkData.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = 'slider-card bg-white shadow-md p-3';
+      card.innerHTML = `
+        <img src="${prod.image}" alt="${prod.name}" loading="lazy">
+        <h3 class="font-bold mt-2 text-sm">${prod.name}</h3>
+        <p class="text-xs text-gray-500">${prod.price}</p>
+      `;
+      track.appendChild(card);
+
+      // Schema Product
+      const schema = document.createElement('script'); 
+      schema.type = 'application/ld+json';
+      schema.textContent = JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Product",
+        "name":prod.name,
+        "image":prod.image,
+        "description":prod.description,
+        "offers":{
+          "@type":"Offer",
+          "priceCurrency":"IDR",
+          "price":prod.price.replace("Rp","").replace(".",""),
+          "availability":"https://schema.org/"+prod.availability
+        }
+      });
+      document.head.appendChild(schema);
+
+      // Modal Zoom
+      card.querySelector('img').addEventListener('click',()=> {
+        document.getElementById('modal-img').src = prod.image;
+        document.getElementById('modal').classList.add('show');
+      });
+    });
+  });
+
+// Modal Close
+document.getElementById('modal').addEventListener('click',()=>{
+  document.getElementById('modal').classList.remove('show');
+});
+</script>
+</body>
+</html>
